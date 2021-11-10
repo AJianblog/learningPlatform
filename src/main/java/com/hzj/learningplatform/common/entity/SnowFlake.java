@@ -1,6 +1,6 @@
 package com.hzj.learningplatform.common.entity;
 
-import com.hzj.learningplatform.common.exceptionHandle.exception.BaseException;
+import com.hzj.learningplatform.common.exceptionhandle.exception.BaseException;
 
 /**
  * 0 - 0001100101 0001010111 1101000100 1010111000 0 - 10001 - 11001 - 000000000000

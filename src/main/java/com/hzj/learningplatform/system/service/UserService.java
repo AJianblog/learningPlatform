@@ -14,4 +14,6 @@ public interface UserService {
      * @return true: 存在, false: 不存在
      */
     Boolean exitSameAccount(String account);
+
+    void register(User user);
 }

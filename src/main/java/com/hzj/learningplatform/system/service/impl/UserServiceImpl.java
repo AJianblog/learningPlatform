@@ -1,6 +1,8 @@
 package com.hzj.learningplatform.system.service.impl;
 
+import com.hzj.learningplatform.common.utils.SnowFlakeIdWorker;
 import com.hzj.learningplatform.system.entity.User;
+import com.hzj.learningplatform.system.exceptionhandle.exception.UserException;
 import com.hzj.learningplatform.system.mapper.UserMapper;
 import com.hzj.learningplatform.system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +35,19 @@ public class UserServiceImpl implements UserService {
     public Boolean exitSameAccount(String account) {
         User user = userMapper.findByAccount(account);
         return user != null;
+    }
+
+    @Override
+    public void register(User user) {
+        if (userMapper.findByAccount(user.getAccount()) != null) {
+            throw new UserException("用户名已存在");
+        }
+        if (userMapper.findByEmail(user.getEmail()) != null) {
+            throw new UserException("邮箱已被注册");
+        }
+        user.setId(String.valueOf(SnowFlakeIdWorker.getInstance().nextId()));
+        user.setEmailStatus(false);
+        user.setFreezeStatus(false);
+        userMapper.addUser(user);
     }
 }

@@ -25,6 +25,13 @@ public class UserController {
         this.userService = userService;
     }
 
+    @ApiOperation(value = "用户注册")
+    @PostMapping("/register")
+    public ResponseResult<Void> register(@RequestBody User user) {
+        userService.register(user);
+        return new ResponseResult<>(ResponseCode.SUCCESS_OK, null);
+    }
+
     @ApiOperation(value = "通过ID查询用户信息")
     @ApiImplicitParam(name = "id", value = "用户ID", dataTypeClass = String.class, dataType = "String", required = true)
     @GetMapping("/findById/{id}")

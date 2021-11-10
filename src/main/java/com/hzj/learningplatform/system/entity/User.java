@@ -17,12 +17,12 @@ public class User {
     /**
      * 账户名
      */
-    @ApiModelProperty(value = "账户名", name = "account")
+    @ApiModelProperty(value = "账户名", name = "account", required = true)
     private String account;
     /**
      * 密码
      */
-    @ApiModelProperty(value = "密码", name = "password")
+    @ApiModelProperty(value = "密码", name = "password", required = true)
     private String password;
     /**
      * 邮箱
@@ -33,17 +33,17 @@ public class User {
      * 邮箱状态, true: 激活, false: 未激活
      */
     @ApiModelProperty(value = "邮箱状态", name = "emailStatus")
-    private String emailStatus;
+    private Boolean emailStatus;
     /**
      * 账号冻结状态, true: 冻结, false: 未冻结
      */
     @ApiModelProperty(value = "账号冻结状态", name = "freezeStatus")
-    private String freezeStatus;
+    private Boolean freezeStatus;
 
     public User() {
     }
 
-    public User(String id, String account, String password, String email, String emailStatus, String freezeStatus) {
+    public User(String id, String account, String password, String email, Boolean emailStatus, Boolean freezeStatus) {
         this.id = id;
         this.account = account;
         this.password = password;
@@ -84,19 +84,19 @@ public class User {
         this.email = email;
     }
 
-    public String getEmailStatus() {
+    public Boolean getEmailStatus() {
         return emailStatus;
     }
 
-    public void setEmailStatus(String emailStatus) {
+    public void setEmailStatus(Boolean emailStatus) {
         this.emailStatus = emailStatus;
     }
 
-    public String getFreezeStatus() {
+    public Boolean getFreezeStatus() {
         return freezeStatus;
     }
 
-    public void setFreezeStatus(String freezeStatus) {
+    public void setFreezeStatus(Boolean freezeStatus) {
         this.freezeStatus = freezeStatus;
     }
 
